@@ -1,7 +1,22 @@
 import csv
 import datetime
 
+with open("Menu.txt", "w") as f:
+    f.write("Pizzanizi seciniz.\n")
+    f.write("1: Klasik\n")
+    f.write("2: Margarita\n")
+    f.write("3: Turk Pizza\n")
+    f.write("4: Sade Pizza\n")
+    f.write("Sosunuzu seciniz.\n")
+    f.write("11: Zeytin\n")
+    f.write("12: Mantar\n")
+    f.write("13: Keci Peyniri\n")
+    f.write("14: Et\n")
+    f.write("14: Sogan\n")
+    f.write("16: Misir\n")
 
+Menu = open("Menu.txt")
+print(Menu.read())
 
 class Pizza:
     def __init__(self, tanim, cost):
@@ -52,25 +67,31 @@ class ZeytinSos(Sos):
     def __init__(self, pizza):
         super().__init__(pizza, Pizza('zeytin', 5.0))
 
+
 class MantarSos(Sos):
-    def __init__(self,pizza):
+    def __init__(self, pizza):
         super().__init__(pizza, Pizza('mantar', 8.0))
 
+
 class KeciPeyniri(Sos):
-    def __init__(self,pizza):
-        super().__init__(pizza, Pizza('keci peyniri', 10.0))     
-        
+    def __init__(self, pizza):
+        super().__init__(pizza, Pizza('keci peyniri', 10.0))
+
+
 class Et(Sos):
-    def __init__(self,pizza):
+    def __init__(self, pizza):
         super().__init__(pizza, Pizza('et', 15.0))
-    
+
+
 class Sogan(Sos):
-    def __init__(self,pizza):
+    def __init__(self, pizza):
         super().__init__(pizza, Pizza('sogan', 8.0))
-        
+
+
 class Misir(Sos):
-    def __init__(self,pizza):
+    def __init__(self, pizza):
         super().__init__(pizza, Pizza('misir', 5.0))
+
 
 def pizza_sec():
     while True:
@@ -93,8 +114,6 @@ def siparis_yazdir(Siparis):
     with open("Orders.csv", "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(Siparis)
-        
-       
 
 
 while True:
@@ -129,25 +148,22 @@ while True:
             pizza = Misir(pizza)
             break
         else:
-           print("Hata!")
-           break
-       
-        
-
+            print("Hata!")
+            break
 
 kullanici_adi = input("Kullanıcı adınızı giriniz: ")
 kullanici_kimligi = input("Kullanici kimliginizi giriniz: ")
 kredi_karti_bilgileri = input("Kredi karti bilgilerinizi giriniz:")
-kredi_karti_şifresi= input("Kredi karti sifresini giriniz: ")
+kredi_karti_şifresi = input("Kredi karti sifresini giriniz: ")
 
-
-        
-
-Siparis = [time, pizza.get_tanim(), pizza.get_cost(),kullanici_adi,kullanici_kimligi,kredi_karti_bilgileri,kredi_karti_şifresi]
+Siparis = [time, pizza.get_tanim(), pizza.get_cost(), kullanici_adi, kullanici_kimligi, kredi_karti_bilgileri,
+           kredi_karti_şifresi]
 
 siparis_yazdir(Siparis)
 
-print("Serbetli Pizzayı tercih ettiginiz icin tesekkurler!\nTarih: {}\nPizza: {}\nUcret: {:.2f}\n".format(time, pizza.get_tanim(), pizza.get_cost()))
+print("Serbetli Pizzayı tercih ettiginiz icin tesekkurler!\nTarih: {}\nPizza: {}\nUcret: {:.2f}\n".format(time,
+                                                                                                          pizza.get_tanim(),
+                                                                                                          pizza.get_cost()))
 
 
 
